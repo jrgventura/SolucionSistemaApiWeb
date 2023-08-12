@@ -104,6 +104,25 @@ namespace SistemaApiWeb.DAO
             return cliente;
         }
 
+        public string Eliminar(int id) {
+            string mensaje = "";
+
+            using (SqlConnection cn = new SqlConnection(cadena)) {
+
+                try {
+                    SqlCommand cmd = new SqlCommand("sp_eliminar_cliente", cn);
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cn.Open();
+                    int c = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha eliminado {c} cliente";
+                } catch (Exception ex) { mensaje = ex.Message; }
+
+            }
+
+            return mensaje;
+        }
+
 
     }
 }
