@@ -3,7 +3,6 @@ using Microsoft.Data.SqlClient;
 
 namespace SistemaApiWeb.DAO
 {
-    // Ejemplo
     public class ClienteDAO
     {
         private string cadena;
