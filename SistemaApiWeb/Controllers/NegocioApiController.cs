@@ -43,6 +43,12 @@ namespace SistemaApiWeb.Controllers
             return Ok(cliente);
         }
 
+        [HttpDelete("EliminarCliente")]
+        public async Task<ActionResult<String>> EliminarCliente(int id) {
+            var mensaje = await Task.Run(() => (new ClienteDAO()).Eliminar(id));
+            return Ok(mensaje);
+        }
+
         
 
     }
