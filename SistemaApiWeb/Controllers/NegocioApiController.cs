@@ -34,9 +34,14 @@ namespace SistemaApiWeb.Controllers
         {
             var mensaje = await Task.Run(() => (new ClienteDAO()).Actualizar(cliente));
             return Ok(mensaje);
-        } 
+        }
 
-        
+        [HttpGet("GetClientes/{id}")]
+        public async Task<ActionResult<Cliente>> GetCliente(int id)
+        {
+            var cliente = await Task.Run(() => (new ClienteDAO()).GetCliente(id));
+            return Ok(cliente);
+        }
 
     }
 }
